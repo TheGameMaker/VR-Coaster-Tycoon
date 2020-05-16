@@ -346,8 +346,8 @@ public class OVRPlayerController : MonoBehaviour
 				MoveScale = 0.70710678f;
 
 			// No positional movement if we are in the air
-			if (!Controller.isGrounded)
-				MoveScale = 0.0f;
+			//if (!Controller.isGrounded)
+			//	MoveScale = 0.0f;
 
 			MoveScale *= SimulationRate * Time.deltaTime;
 
@@ -508,8 +508,8 @@ public class OVRPlayerController : MonoBehaviour
 	/// </summary>
 	public bool Jump()
 	{
-		if (!Controller.isGrounded)
-			return false;
+		//if (!Controller.isGrounded)
+		//	return false;
 
 		MoveThrottle += new Vector3(0, transform.lossyScale.y * JumpForce, 0);
 

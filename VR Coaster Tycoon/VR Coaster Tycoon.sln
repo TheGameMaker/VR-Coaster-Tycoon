@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oculus.Platform", "Oculus.Platform.csproj", "{F253EF56-0CF7-3257-146F-28986716D0B3}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{A09CB923-C340-2142-0258-25FDE4652012}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oculus.VR", "Oculus.VR.csproj", "{422D3859-D7E6-99CA-FC4E-CBC25447CFF9}"
@@ -11,12 +13,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oculus.VR.Scripts.Editor", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oculus.VR.Editor", "Oculus.VR.Editor.csproj", "{EC08AC0B-48D7-D733-F699-930A5BD67E46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oculus.Platform.Editor", "Oculus.Platform.Editor.csproj", "{9CBAB77A-EAB3-5493-2E5E-3D533C81295E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F253EF56-0CF7-3257-146F-28986716D0B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F253EF56-0CF7-3257-146F-28986716D0B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F253EF56-0CF7-3257-146F-28986716D0B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F253EF56-0CF7-3257-146F-28986716D0B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A09CB923-C340-2142-0258-25FDE4652012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A09CB923-C340-2142-0258-25FDE4652012}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A09CB923-C340-2142-0258-25FDE4652012}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,6 +45,10 @@ Global
 		{EC08AC0B-48D7-D733-F699-930A5BD67E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC08AC0B-48D7-D733-F699-930A5BD67E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC08AC0B-48D7-D733-F699-930A5BD67E46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CBAB77A-EAB3-5493-2E5E-3D533C81295E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CBAB77A-EAB3-5493-2E5E-3D533C81295E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CBAB77A-EAB3-5493-2E5E-3D533C81295E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CBAB77A-EAB3-5493-2E5E-3D533C81295E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

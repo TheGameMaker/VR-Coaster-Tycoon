@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,7 +29,7 @@ public class SpawnPrefab : MonoBehaviour
         //Instantiate(prefab, transform.position, prefab.transform.rotation);
         List<Toggle> activeToggles = new List<Toggle>(trackGroup.ActiveToggles());
 
-        foreach(Toggle toggle in activeToggles)
+        foreach (Toggle toggle in activeToggles)
         {
             prefab = toggle.GetComponent<returnPrefab>().getPrefab();
             spacing = toggle.GetComponent<returnPrefab>().getSpacing();

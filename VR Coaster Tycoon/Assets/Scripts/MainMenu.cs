@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     //[SerializeField] Text highscoreVal;
+    public int buildindex = 1;
     public void Start()
     {
         //highscoreVal.text = PlayerPrefs.GetInt("HighScore",0).ToString();
@@ -15,7 +13,12 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(buildindex, LoadSceneMode.Single);
+    }
+
+    public void setBuildIndex(int b)
+    {
+        buildindex = b;
     }
 
     public void QuitGame()

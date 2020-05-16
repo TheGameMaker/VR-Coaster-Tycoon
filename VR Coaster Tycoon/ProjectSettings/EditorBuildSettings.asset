@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TycoonMap1.unity
     guid: ae19b7a1378053d45bd5103c5f8acb53
+  - enabled: 1
+    path: Assets/Scenes/TycoonTerrainMap.unity
+    guid: b971f847dc8ed0c4e88b95fa7d1816af
   m_configObjects: {}

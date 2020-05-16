@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class isGrabbed : MonoBehaviour
 {
@@ -14,7 +12,7 @@ public class isGrabbed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.GetComponent<OVRGrabbable>().isGrabbed == true)
+        if (transform.GetComponent<OVRGrabbable>().isGrabbed == true)
         {
             m_Rigidbody.constraints = RigidbodyConstraints.None;
         }
