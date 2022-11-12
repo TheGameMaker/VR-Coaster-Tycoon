@@ -27,11 +27,11 @@ public class PlayerControls : MonoBehaviour
         //Debug.Log("got here");
 
 
-        if (devices.Count > 0)
+        if (devices.Count > 1)
         {
             left = devices[1];
             right = devices[2];
-           // Debug.Log(left.name + right.name);
+            Debug.Log(left.name + right.name);
         }
     }
     // Update is called once per frame
@@ -46,13 +46,13 @@ public class PlayerControls : MonoBehaviour
         left.TryGetFeatureValue(CommonUsages.grip, out float LGripval);
         right.TryGetFeatureValue(CommonUsages.trigger, out float RTrigval);
         left.TryGetFeatureValue(CommonUsages.grip, out float RGripval);
-        if (RTrigval > 0.9f &&  LTrigval > 0.9f && LGripval > 0.9f && RGripval > 0.9f && !fly)
+        if (RTrigval > 0.8f &&  LTrigval > 0.8f && LGripval > 0.8f && RGripval > 0.8f && !fly)
         {
             Debug.Log("fly mode");
             controller.GravityModifier = 0;
             //Debug.Log(controller.GravityModifier);
             fly = true;
-        } else if (RTrigval > 0.9f && LTrigval > 0.9f && LGripval > 0.9f && RGripval > 0.9f && fly)
+        } else if (RTrigval > 0.8f && LTrigval > 0.8f && LGripval > 0.8f && RGripval > 0.8f && fly)
         {
             Debug.Log("Fly disable");
             controller.GravityModifier = 1;

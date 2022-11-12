@@ -334,12 +334,14 @@ public class OVRGrabber : MonoBehaviour
         if (forceTeleport)
         {
             grabbedRigidbody.transform.position = grabbablePosition;
-            grabbedRigidbody.transform.rotation = grabbableRotation;
+            if (grabbedRigidbody.constraints != RigidbodyConstraints.FreezeRotation)
+                grabbedRigidbody.transform.rotation = grabbableRotation;
         }
         else
         {
             grabbedRigidbody.MovePosition(grabbablePosition);
-            grabbedRigidbody.MoveRotation(grabbableRotation);
+            if (grabbedRigidbody.constraints != RigidbodyConstraints.FreezeRotation)
+                grabbedRigidbody.MoveRotation(grabbableRotation);
         }
     }
 

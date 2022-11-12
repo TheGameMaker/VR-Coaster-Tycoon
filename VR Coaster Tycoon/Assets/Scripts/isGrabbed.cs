@@ -14,7 +14,8 @@ public class isGrabbed : MonoBehaviour
     {
         if (transform.GetComponent<OVRGrabbable>().isGrabbed == true)
         {
-            m_Rigidbody.constraints = RigidbodyConstraints.None;
+            m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+           // m_Rigidbody.constraints =
         }
         else
         {

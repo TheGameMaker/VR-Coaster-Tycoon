@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class SpawnPrefab : MonoBehaviour
@@ -9,13 +10,14 @@ public class SpawnPrefab : MonoBehaviour
     private float spacing;
     [SerializeField] private Transform cube;
     [SerializeField] private Transform spawn;
-    [SerializeField] private ToggleGroup trackGroup;
+    [SerializeField] public ToggleGroup trackGroup;
     [SerializeField] private bool deleteAll;
     [SerializeField] private bool ignoreSpacing;
 
     public void Start()
     {
-        trackGroup = FindObjectOfType<ToggleGroup>();
+       // Invoke("requestTrackGroup", 1f);
+        requestTrackGroup();
     }
 
     public void Update()
@@ -23,32 +25,54 @@ public class SpawnPrefab : MonoBehaviour
         //do nothing
     }
 
+    private void requestTrackGroup()
+    {
+        SpawnRequest.TriggerEvent(this.gameObject);
+    }
+
+    public GameEvent OnSpawn, SpawnRequest;
     public void Spawn()
     {
         //Instantiate(prefab);
         //Instantiate(prefab, transform.position, prefab.transform.rotation);
-        List<Toggle> activeToggles = new List<Toggle>(trackGroup.ActiveToggles());
+        if (!trackGroup)
+            SpawnRequest.TriggerEvent(this.gameObject);
 
-        foreach (Toggle toggle in activeToggles)
+        if (trackGroup != null)
         {
-            prefab = toggle.GetComponent<returnPrefab>().getPrefab();
-            spacing = toggle.GetComponent<returnPrefab>().getSpacing();
-        }
+            List<Toggle> activeToggles = new List<Toggle>(trackGroup.ActiveToggles());
 
-        if (!ignoreSpacing)
-        {
-            spawn.position = new Vector3(spawn.position.x, spawn.position.y + spacing, spawn.position.z);
-        }
-        Instantiate(prefab, spawn.position, prefab.transform.rotation);
-
-        if (deleteAll)
-        {
-            foreach (Transform child in cube)
+            foreach (Toggle toggle in activeToggles)
             {
-                Destroy(child.gameObject);
+                prefab = toggle.GetComponent<returnPrefab>().getPrefab();
+                spacing = toggle.GetComponent<returnPrefab>().getSpacing();
             }
-            Destroy(cube.gameObject);
-        }
 
+            if (!ignoreSpacing)
+            {
+                spawn.position = new Vector3(spawn.position.x, spawn.position.y + spacing, spawn.position.z);
+            }
+
+            GameObject g = Instantiate(prefab, spawn.position, Quaternion.LookRotation(spawn.forward));
+            //if (cube != null)
+            //     g = Instantiate(prefab, spawn.position, cube.parent.localRotation);
+            //else
+            //    g = Instantiate(prefab, spawn.position, spawn.parent.localRotation);
+
+            
+
+            if (deleteAll)
+            {
+                foreach (Transform child in cube)
+                {
+                    Destroy(child.gameObject);
+                }
+                Destroy(cube.gameObject);
+            }
+
+            OnSpawn.TriggerEvent(g);
+        }
     }
+
+
 }
