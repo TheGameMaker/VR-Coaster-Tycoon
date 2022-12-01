@@ -14,6 +14,8 @@ public class SpawnPrefab : MonoBehaviour
     [SerializeField] private bool deleteAll;
     [SerializeField] private bool ignoreSpacing;
 
+    public string rideName = "Ride1";
+
     public void Start()
     {
        // Invoke("requestTrackGroup", 1f);
@@ -53,14 +55,10 @@ public class SpawnPrefab : MonoBehaviour
                 spawn.position = new Vector3(spawn.position.x, spawn.position.y + spacing, spawn.position.z);
             }
 
-            GameObject g = Instantiate(prefab, spawn.position, Quaternion.LookRotation(spawn.forward));
-            //if (cube != null)
-            //     g = Instantiate(prefab, spawn.position, cube.parent.localRotation);
-            //else
-            //    g = Instantiate(prefab, spawn.position, spawn.parent.localRotation);
+            GameObject g = Instantiate(prefab, spawn.position, Quaternion.LookRotation(spawn.forward, spawn.up) * prefab.transform.rotation);
+            g.name = prefab.name;
 
-            
-
+           
             if (deleteAll)
             {
                 foreach (Transform child in cube)
@@ -71,6 +69,7 @@ public class SpawnPrefab : MonoBehaviour
             }
 
             OnSpawn.TriggerEvent(g);
+           // OnSpawn.TriggerEvent();
         }
     }
 

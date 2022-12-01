@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
 
     public void assignToggleGroup(GameObject g)
     {
-        Debug.Log("Event Triggered");
+       // Debug.Log("Event Triggered");
         if (g.GetComponent<SpawnPrefab>() != null)
         {
             g.GetComponent<SpawnPrefab>().trackGroup = BuildPieces;
@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         spawnListener.gameEvent = SpawnRequest;
-        onSpawnRequest.AddListener(this.assignToggleGroup);
+        onSpawnRequest.AddListener(assignToggleGroup);
         spawnListener.onGameObjectEventTriggered = onSpawnRequest;
     }
 

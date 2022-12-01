@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class pathVerticies : MonoBehaviour
 {
-    public List<Vector3> pathPoints;
+    //public List<Vector3> pathPoints;
+    public List<Transform> pathTransforms;
     Vector3 Origin, Rotation;
     //private void OnDrawGizmosSelected()
     //{
@@ -62,16 +63,22 @@ public class pathVerticies : MonoBehaviour
     public GameEvent spawnEvent;
     private GameObjectEvent onTrackPieceSpawn = new GameObjectEvent();
 
+    [HideInInspector]
+    public LastPieceDetector pieceDetector;
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        foreach (Vector3 point in pathPoints)
-            Gizmos.DrawSphere(point, 0.1f);
+        foreach (Transform point in pathTransforms)
+            Gizmos.DrawSphere(point.position, 0.1f);
     }
     public void addPathPoints(List<Transform> newPoints)
     {
         foreach (Transform t in newPoints)
-            pathPoints.Add(t.position);
+        {
+           // pathPoints.Add(t.position);
+            pathTransforms.Add(t);
+        }
     }
 
     public void addPathPoints(GameObject g)
@@ -79,21 +86,25 @@ public class pathVerticies : MonoBehaviour
         if (g.GetComponent<TrackPoints>() != null)
         {
             foreach (Transform t in g.GetComponent<TrackPoints>().TrackPiecePoints)
-                pathPoints.Add(t.position);
+            {
+               // pathPoints.Add(t.position);
+                pathTransforms.Add(t);
+            }
+            pieceDetector.CheckTrackEnd();
         }
     }
 
     private void Start()
     {
         spawnListener.gameEvent = spawnEvent;
-        onTrackPieceSpawn.AddListener(this.addPathPoints);
+        onTrackPieceSpawn.AddListener(addPathPoints);
         spawnListener.onGameObjectEventTriggered = onTrackPieceSpawn;
        // spawnListener.onGameObjectEventTriggered.AddListener(this.addPathPoints);
 
-        if(FindObjectOfType<TrackPoints>() != null)
-        {
-            addPathPoints(FindObjectOfType<TrackPoints>().gameObject);
-        }
+        //if(transform.parent.parent.GetComponent<TrackPoints>() != null)
+        //{
+        //    addPathPoints(transform.parent.parent.gameObject);
+        //}
     }
 
     private void OnEnable()
